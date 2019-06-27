@@ -1,11 +1,11 @@
 import React from "react"
-
+import Products from "./components/products"
 import "./App.css"
 
 function App() {
   return (
     <div className="container">
-      <h1>This is products page</h1>
+      <Products />
     </div>
   )
 }
