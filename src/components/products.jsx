@@ -11,6 +11,15 @@ export default class Products extends React.Component {
     this.setState({ products })
   }
   render() {
-    return <h1>Products</h1>
+    return (
+      <React.Fragment>
+        <h1>Products</h1>
+        <div className="row">
+          {this.state.products.map(p => (
+            <div className="card">{p.name}</div>
+          ))}
+        </div>
+      </React.Fragment>
+    )
   }
 }
