@@ -25,6 +25,9 @@ export default class Products extends React.Component {
                   <p className="card-text">
                     <small className="text-muted">{p.numberInStock}</small>
                   </p>
+                  <button className="btn btn-sm btn-danger float-right">
+                    delete
+                  </button>
                 </div>
               </div>
             </div>
