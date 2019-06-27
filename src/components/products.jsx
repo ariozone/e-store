@@ -10,22 +10,40 @@ export default class Products extends React.Component {
     products = getProducts()
     this.setState({ products })
   }
+  handleDelete(product) {
+    const productsBeforeDelete = [...this.state.products]
+    try {
+      const products = productsBeforeDelete.filter(p => p !== product)
+      this.setState({ products })
+    } catch (err) {
+      console.error(err)
+      this.setState({ products: productsBeforeDelete })
+    }
+  }
   render() {
+    const { products } = this.state
     return (
       <React.Fragment>
-        <h1>Products</h1>
+        <h1 className="my-5">
+          There are {products.length} products available in the database.
+        </h1>
         <div className="row" height="50">
-          {this.state.products.map(p => (
+          {products.map(p => (
             <div className="col-lg-4 col-md-12>">
               <div className="card mb-4">
                 <img className=" card-img-top" src={p.image} alt="Product" />
                 <div className="card-body">
                   <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text">{p.price}</p>
+                  <p className="card-text">${p.price}</p>
                   <p className="card-text">
-                    <small className="text-muted">{p.numberInStock}</small>
+                    <small className="text-muted">
+                      In stock: {p.numberInStock}
+                    </small>
                   </p>
-                  <button className="btn btn-sm btn-danger float-right">
+                  <button
+                    className="btn btn-sm btn-danger float-right"
+                    onClick={() => this.handleDelete(p)}
+                  >
                     delete
                   </button>
                 </div>
