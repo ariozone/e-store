@@ -5,11 +5,13 @@ export default class Products extends React.Component {
   state = {
     products: []
   }
+
   componentDidMount() {
     let products = [...this.state.products]
     products = getProducts()
     this.setState({ products })
   }
+
   handleDelete(product) {
     const productsBeforeDelete = [...this.state.products]
     try {
@@ -20,6 +22,7 @@ export default class Products extends React.Component {
       this.setState({ products: productsBeforeDelete })
     }
   }
+
   render() {
     const { products } = this.state
     return (
