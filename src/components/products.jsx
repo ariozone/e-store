@@ -1,5 +1,6 @@
 import React from "react"
 import { getProducts } from "../services/fakeProductService"
+import ListGroup from "./common/listGroup"
 
 export default class Products extends React.Component {
   state = {
