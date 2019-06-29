@@ -12,7 +12,7 @@ export default class Products extends React.Component {
 
   componentDidMount() {
     const products = getProducts()
-    const categories = getCategories()
+    const categories = [{ _id: 1, name: "All Categories" }, ...getCategories()]
     this.setState({ products, categories })
   }
 
