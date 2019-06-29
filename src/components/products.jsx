@@ -14,6 +14,7 @@ export default class Products extends React.Component {
     products = getProducts()
     this.setState({ products })
     const categories = getCategories()
+    this.setState({ categories })
   }
 
   handleDelete(product) {
@@ -28,10 +29,10 @@ export default class Products extends React.Component {
   }
 
   render() {
-    const { products } = this.state
+    const { products, categories } = this.state
     return (
       <div className="row my-5">
-        <div className="col-3">{<ListGroup />}</div>
+        <div className="col-3">{<ListGroup categories={categories} />}</div>
         <div className="col">
           <h1 className="my-5">
             There are {products.length} products available in the database.
