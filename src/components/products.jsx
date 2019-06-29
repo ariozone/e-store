@@ -7,12 +7,12 @@ export default class Products extends React.Component {
   state = {
     products: [],
     categories: [],
-    selectedCategory: ""
+    selectedCategory: "All Categories"
   }
 
   componentDidMount() {
     const products = getProducts()
-    const categories = [{ _id: 1, name: "All Categories" }, ...getCategories()]
+    const categories = [{ _id: "", name: "All Categories" }, ...getCategories()]
     this.setState({ products, categories })
   }
 
@@ -33,6 +33,10 @@ export default class Products extends React.Component {
 
   render() {
     const { products, categories, selectedCategory } = this.state
+    let filtered =
+      selectedCategory && selectedCategory._id
+        ? products.filter(p => p.category._id === selectedCategory._id)
+        : products
     return (
       <div className="row my-5">
         <div className="col-3">
@@ -49,7 +53,7 @@ export default class Products extends React.Component {
             There are {products.length} products available in the database.
           </h1>
           <div className="row">
-            {products.map(p => (
+            {filtered.map(p => (
               <div className="col-lg-4 col-md-12>">
                 <div className="card mb-4">
                   <img className=" card-img-top" src={p.image} alt="Product" />
