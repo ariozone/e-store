@@ -4,11 +4,9 @@ export default function ListGroup(props) {
   return (
     <div>
       <ul class="list-group">
-        <li className="list-group-item">Cras justo odio</li>
-        <li className="list-group-item">Dapibus ac facilisis in</li>
-        <li className="list-group-item">Morbi leo risus</li>
-        <li className="list-group-item">Porta ac consectetur ac</li>
-        <li className="list-group-item">Vestibulum at eros</li>
+        {props.categories.map(c => (
+          <li className="list-group-item">{c.name}</li>
+        ))}
       </ul>
     </div>
   )
