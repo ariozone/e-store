@@ -5,7 +5,13 @@ export default function ListGroup(props) {
     <div>
       <ul class="list-group">
         {props.categories.map(c => (
-          <li className="list-group-item">{c.name}</li>
+          <li
+            className="list-group-item"
+            key={c._id}
+            onClick={() => props.onSelect(c)}
+          >
+            {c.name}
+          </li>
         ))}
       </ul>
     </div>

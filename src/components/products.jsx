@@ -6,7 +6,8 @@ import { getCategories } from "../services/fakeCategoryService"
 export default class Products extends React.Component {
   state = {
     products: [],
-    categories: []
+    categories: [],
+    selectedCategory: ""
   }
 
   componentDidMount() {
@@ -28,10 +29,12 @@ export default class Products extends React.Component {
     }
   }
 
-  handleSelectCat(category) {}
+  handleSelectCat(category) {
+    this.setState({ selectedCategory: category })
+  }
 
   render() {
-    const { products, categories } = this.state
+    const { products, categories, selectedCategory } = this.state
     return (
       <div className="row my-5">
         <div className="col-3">
@@ -39,6 +42,7 @@ export default class Products extends React.Component {
             <ListGroup
               categories={categories}
               onSelect={this.handleSelectCat}
+              selectedCategory={selectedCategory}
             />
           }
         </div>
