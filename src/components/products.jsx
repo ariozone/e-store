@@ -11,11 +11,9 @@ export default class Products extends React.Component {
   }
 
   componentDidMount() {
-    let products = [...this.state.products]
-    products = getProducts()
-    this.setState({ products })
+    const products = getProducts()
     const categories = getCategories()
-    this.setState({ categories })
+    this.setState({ products, categories })
   }
 
   handleDelete(product) {
@@ -29,7 +27,7 @@ export default class Products extends React.Component {
     }
   }
 
-  handleSelectCat(category) {
+  handleSelectCat = category => {
     this.setState({ selectedCategory: category })
   }
 
@@ -50,7 +48,7 @@ export default class Products extends React.Component {
           <h1 className="my-5">
             There are {products.length} products available in the database.
           </h1>
-          <div className="row" height="50">
+          <div className="row">
             {products.map(p => (
               <div className="col-lg-4 col-md-12>">
                 <div className="card mb-4">

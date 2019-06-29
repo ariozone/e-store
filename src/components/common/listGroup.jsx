@@ -1,14 +1,19 @@
 import React from "react"
 
 export default function ListGroup(props) {
+  const { selectedCategory, onSelect, categories } = props
   return (
     <div>
       <ul class="list-group">
-        {props.categories.map(c => (
+        {categories.map(c => (
           <li
-            className="list-group-item"
+            className={
+              c === selectedCategory
+                ? "list-group-item active"
+                : "list-group-item"
+            }
             key={c._id}
-            onClick={() => props.onSelect(c)}
+            onClick={() => onSelect(c)}
           >
             {c.name}
           </li>
