@@ -1,16 +1,19 @@
 import React from "react"
 import { getProducts } from "../services/fakeProductService"
 import ListGroup from "./common/listGroup"
+import { getCategories } from "../services/fakeCategoryService"
 
 export default class Products extends React.Component {
   state = {
-    products: []
+    products: [],
+    categories: []
   }
 
   componentDidMount() {
     let products = [...this.state.products]
     products = getProducts()
     this.setState({ products })
+    const categories = getCategories()
   }
 
   handleDelete(product) {
