@@ -50,7 +50,8 @@ export default class Products extends React.Component {
         </div>
         <div className="col">
           <h1 className="my-5">
-            There are {products.length} products available in the database.
+            There are {filtered.length} {selectedCategory.name} products
+            available in the database.
           </h1>
           <div className="row">
             {filtered.map(p => (
