@@ -2,6 +2,7 @@ import React from "react"
 import { getProducts } from "../services/fakeProductService"
 import ListGroup from "./common/listGroup"
 import { getCategories } from "../services/fakeCategoryService"
+import Pagination from "./common/pagination"
 
 export default class Products extends React.Component {
   state = {
@@ -76,6 +77,7 @@ export default class Products extends React.Component {
                 </div>
               </div>
             ))}
+            <Pagination />
           </div>
         </div>
       </div>
