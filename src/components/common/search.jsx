@@ -1,5 +1,5 @@
 import React from "react"
 const Search = props => {
-  return <h1>Input</h1>
+  return <input type="text" class="form-control" placeholder="Search..." />
 }
 export default Search
