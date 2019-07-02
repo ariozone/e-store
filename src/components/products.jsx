@@ -1,18 +1,26 @@
 import React from "react"
 import { getProducts } from "../services/fakeProductService"
+import ListGroup from "./common/listGroup"
+import { getCategories } from "../services/fakeCategoryService"
+import Pagination from "./common/pagination"
+import { paginate } from "../utils/paginate"
 
 export default class Products extends React.Component {
   state = {
-    products: []
+    products: [],
+    categories: [],
+    selectedCategory: "All Categories",
+    pageSize: 3,
+    currentPage: 1
   }
 
   componentDidMount() {
-    let products = [...this.state.products]
-    products = getProducts()
-    this.setState({ products })
+    const products = getProducts()
+    const categories = [{ _id: "", name: "All Categories" }, ...getCategories()]
+    this.setState({ products, categories })
   }
 
-  handleDelete(product) {
+  handleDelete = product => {
     const productsBeforeDelete = [...this.state.products]
     try {
       const products = productsBeforeDelete.filter(p => p !== product)
@@ -23,38 +31,81 @@ export default class Products extends React.Component {
     }
   }
 
+  handleSelectCat = category => {
+    this.setState({ selectedCategory: category, currentPage: 1 })
+  }
+
+  handlePageChanges = page => {
+    this.setState({ currentPage: page })
+  }
+
   render() {
-    const { products } = this.state
+    const {
+      products: allProducts,
+      categories,
+      selectedCategory,
+      pageSize,
+      currentPage
+    } = this.state
+
+    const filtered =
+      selectedCategory && selectedCategory._id
+        ? allProducts.filter(p => p.category._id === selectedCategory._id)
+        : allProducts
+
+    const products = paginate(filtered, currentPage, pageSize)
+
     return (
-      <React.Fragment>
-        <h1 className="my-5">
-          There are {products.length} products available in the database.
-        </h1>
-        <div className="row" height="50">
-          {products.map(p => (
-            <div className="col-lg-4 col-md-12>">
-              <div className="card mb-4">
-                <img className=" card-img-top" src={p.image} alt="Product" />
-                <div className="card-body">
-                  <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text">${p.price}</p>
-                  <p className="card-text">
-                    <small className="text-muted">
-                      In stock: {p.numberInStock}
-                    </small>
-                  </p>
-                  <button
-                    className="btn btn-sm btn-danger float-right"
-                    onClick={() => this.handleDelete(p)}
-                  >
-                    delete
-                  </button>
+      <div className="row my-5">
+        <div className="col-3">
+          {
+            <ListGroup
+              categories={categories}
+              onSelect={this.handleSelectCat}
+              selectedCategory={selectedCategory}
+            />
+          }
+        </div>
+        <div className="col">
+          <h1 className="my-5">
+            There are {filtered.length}{" "}
+            {selectedCategory.name === "All Categories"
+              ? ""
+              : selectedCategory.name}{" "}
+            products available in the database.
+          </h1>
+          <div className="row">
+            {products.map(p => (
+              <div key={p._id} className="col-lg-4 col-md-12>">
+                <div className="card mb-4">
+                  <img className=" card-img-top" src={p.image} alt="Product" />
+                  <div className="card-body">
+                    <h5 className="card-title">{p.name}</h5>
+                    <p className="card-text">${p.price}</p>
+                    <p className="card-text">
+                      <small className="text-muted">
+                        In stock: {p.numberInStock}
+                      </small>
+                    </p>
+                    <button
+                      className="btn btn-sm btn-danger float-right"
+                      onClick={() => this.handleDelete(p)}
+                    >
+                      delete
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <Pagination
+            itemsCount={filtered.length}
+            onPageChange={this.handlePageChanges}
+            pageSize={pageSize}
+            currentPage={currentPage}
+          />
         </div>
-      </React.Fragment>
+      </div>
     )
   }
 }
