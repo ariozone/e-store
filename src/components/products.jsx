@@ -34,7 +34,11 @@ export default class Products extends React.Component {
   }
 
   handleSelectCat = category => {
-    this.setState({ selectedCategory: category, currentPage: 1 })
+    this.setState({
+      selectedCategory: category,
+      currentPage: 1,
+      searchQuery: ""
+    })
   }
 
   handlePageChanges = page => {
@@ -43,6 +47,11 @@ export default class Products extends React.Component {
 
   handleSearch = query => {
     console.log(query)
+    this.setState({
+      searchQuery: query,
+      currentPage: 1,
+      selectedCategory: "All Categories"
+    })
   }
 
   render() {
@@ -51,7 +60,8 @@ export default class Products extends React.Component {
       categories,
       selectedCategory,
       pageSize,
-      currentPage
+      currentPage,
+      searchQuery
     } = this.state
 
     const filtered =
@@ -80,7 +90,7 @@ export default class Products extends React.Component {
               : selectedCategory.name}{" "}
             products available in the database.
           </h1>
-          <Search onChange={this.handleSearch} />
+          <Search onChange={this.handleSearch} value={searchQuery} />
           <div className="row">
             {products.map(p => (
               <div key={p._id} className="col-lg-4 col-md-12>">
