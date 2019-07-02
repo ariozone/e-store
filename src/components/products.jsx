@@ -32,7 +32,7 @@ export default class Products extends React.Component {
   }
 
   handleSelectCat = category => {
-    this.setState({ selectedCategory: category })
+    this.setState({ selectedCategory: category, currentPage: 1 })
   }
 
   handlePageChanges = page => {
