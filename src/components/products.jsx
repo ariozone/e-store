@@ -3,6 +3,7 @@ import { getProducts } from "../services/fakeProductService"
 import ListGroup from "./common/listGroup"
 import { getCategories } from "../services/fakeCategoryService"
 import Pagination from "./common/pagination"
+import SearchProducts from './searchProducts'
 import { paginate } from "../utils/paginate"
 import Search from "./common/search"
 
@@ -11,7 +12,9 @@ export default class Products extends React.Component {
     products: [],
     categories: [],
     selectedCategory: "All Categories",
+
     pageSize: 6,
+
     currentPage: 1,
     searchQuery: ""
   }
@@ -34,11 +37,13 @@ export default class Products extends React.Component {
   }
 
   handleSelectCat = category => {
+
     this.setState({
       selectedCategory: category,
       currentPage: 1,
       searchQuery: ""
     })
+
   }
 
   handlePageChanges = page => {
@@ -46,7 +51,7 @@ export default class Products extends React.Component {
   }
 
   handleSearch = query => {
-    console.log(query)
+
     this.setState({
       searchQuery: query,
       currentPage: 1,
@@ -60,6 +65,7 @@ export default class Products extends React.Component {
       categories,
       selectedCategory,
       pageSize,
+
       currentPage,
       searchQuery
     } = this.state
@@ -73,6 +79,7 @@ export default class Products extends React.Component {
           selectedCategory && selectedCategory._id
             ? allProducts.filter(p => p.category._id === selectedCategory._id)
             : allProducts)
+
 
     const products = paginate(filtered, currentPage, pageSize)
 
@@ -95,6 +102,7 @@ export default class Products extends React.Component {
               : selectedCategory.name}{" "}
             products available in the database.
           </h1>
+
           <Search onChange={this.handleSearch} value={searchQuery} />
           <div className="row">
             {products.map(p => (
