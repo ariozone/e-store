@@ -2,9 +2,10 @@ import React from 'react'
 
 function searchProducts() {
     return (
-        <form className="">
-
-        </form>
+        <div className="input-group">
+            <label htmlFor=""></label>
+            <input type="text" />
+        </div>
     )
 }
 
