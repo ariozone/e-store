@@ -4,6 +4,7 @@ import ListGroup from "./common/listGroup"
 import { getCategories } from "../services/fakeCategoryService"
 import Pagination from "./common/pagination"
 import { paginate } from "../utils/paginate"
+import Search from "./common/search"
 
 export default class Products extends React.Component {
   state = {
@@ -37,6 +38,10 @@ export default class Products extends React.Component {
 
   handlePageChanges = page => {
     this.setState({ currentPage: page })
+  }
+
+  handleSearch = query => {
+    console.log(query)
   }
 
   render() {
@@ -74,6 +79,7 @@ export default class Products extends React.Component {
               : selectedCategory.name}{" "}
             products available in the database.
           </h1>
+          <Search onChange={this.handleSearch} />
           <div className="row">
             {products.map(p => (
               <div key={p._id} className="col-lg-4 col-md-12>">

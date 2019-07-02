@@ -1,5 +1,17 @@
 import React from "react"
 const Search = props => {
-  return <input type="text" class="form-control" placeholder="Search..." />
+  return (
+    <div className="input-group mb-3">
+      <input
+        type="text"
+        name="search"
+        className="form-control"
+        placeholder="Search..."
+        aria-label="Search"
+        value={props.value}
+        onChange={event => props.onChange(event.target.value)}
+      />
+    </div>
+  )
 }
 export default Search
