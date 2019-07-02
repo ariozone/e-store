@@ -48,12 +48,12 @@ export default class Products extends React.Component {
       currentPage
     } = this.state
 
-    // let filtered =
-    //   selectedCategory && selectedCategory._id
-    //     ? allProducts.filter(p => p.category._id === selectedCategory._id)
-    //     : allProducts
+    const filtered =
+      selectedCategory && selectedCategory._id
+        ? allProducts.filter(p => p.category._id === selectedCategory._id)
+        : allProducts
 
-    const products = paginate(allProducts, currentPage, pageSize)
+    const products = paginate(filtered, currentPage, pageSize)
 
     return (
       <div className="row my-5">
@@ -68,7 +68,7 @@ export default class Products extends React.Component {
         </div>
         <div className="col">
           <h1 className="my-5">
-            There are {allProducts.length}{" "}
+            There are {filtered.length}{" "}
             {selectedCategory.name === "All Categories"
               ? ""
               : selectedCategory.name}{" "}
@@ -99,7 +99,7 @@ export default class Products extends React.Component {
             ))}
           </div>
           <Pagination
-            itemsCount={allProducts.length}
+            itemsCount={filtered.length}
             onPageChange={this.handlePageChanges}
             pageSize={pageSize}
             currentPage={currentPage}
