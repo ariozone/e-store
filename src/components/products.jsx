@@ -64,10 +64,15 @@ export default class Products extends React.Component {
       searchQuery
     } = this.state
 
-    const filtered =
-      selectedCategory && selectedCategory._id
-        ? allProducts.filter(p => p.category._id === selectedCategory._id)
-        : allProducts
+    let filtered = allProducts
+    searchQuery
+      ? (filtered = allProducts.filter(p =>
+          p.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+        ))
+      : (filtered =
+          selectedCategory && selectedCategory._id
+            ? allProducts.filter(p => p.category._id === selectedCategory._id)
+            : allProducts)
 
     const products = paginate(filtered, currentPage, pageSize)
 

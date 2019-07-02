@@ -1,7 +1,7 @@
 import React from "react"
 const Search = props => {
   return (
-    <div className="input-group mb-3">
+    <div className="input-group mb-5">
       <input
         type="text"
         name="search"
