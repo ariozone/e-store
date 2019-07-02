@@ -10,7 +10,7 @@ export default class Products extends React.Component {
     products: [],
     categories: [],
     selectedCategory: "All Categories",
-    pageSize: 3,
+    pageSize: 6,
     currentPage: 1
   }
 
