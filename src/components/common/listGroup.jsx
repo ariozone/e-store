@@ -4,7 +4,7 @@ export default function ListGroup(props) {
   const { selectedCategory, onSelect, categories } = props
   return (
     <div>
-      <ul class="list-group">
+      <ul className="list-group">
         {categories.map(c => (
           <li
             className={

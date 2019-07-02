@@ -3,12 +3,15 @@ import { getProducts } from "../services/fakeProductService"
 import ListGroup from "./common/listGroup"
 import { getCategories } from "../services/fakeCategoryService"
 import Pagination from "./common/pagination"
+import { paginate } from "../utils/paginate"
 
 export default class Products extends React.Component {
   state = {
     products: [],
     categories: [],
-    selectedCategory: "All Categories"
+    selectedCategory: "All Categories",
+    pageSize: 3,
+    currentPage: 1
   }
 
   componentDidMount() {
@@ -17,7 +20,7 @@ export default class Products extends React.Component {
     this.setState({ products, categories })
   }
 
-  handleDelete(product) {
+  handleDelete = product => {
     const productsBeforeDelete = [...this.state.products]
     try {
       const products = productsBeforeDelete.filter(p => p !== product)
@@ -32,12 +35,26 @@ export default class Products extends React.Component {
     this.setState({ selectedCategory: category })
   }
 
+  handlePageChanges = page => {
+    this.setState({ currentPage: page })
+  }
+
   render() {
-    const { products, categories, selectedCategory } = this.state
-    let filtered =
-      selectedCategory && selectedCategory._id
-        ? products.filter(p => p.category._id === selectedCategory._id)
-        : products
+    const {
+      products: allProducts,
+      categories,
+      selectedCategory,
+      pageSize,
+      currentPage
+    } = this.state
+
+    // let filtered =
+    //   selectedCategory && selectedCategory._id
+    //     ? allProducts.filter(p => p.category._id === selectedCategory._id)
+    //     : allProducts
+
+    const products = paginate(allProducts, currentPage, pageSize)
+
     return (
       <div className="row my-5">
         <div className="col-3">
@@ -51,12 +68,15 @@ export default class Products extends React.Component {
         </div>
         <div className="col">
           <h1 className="my-5">
-            There are {filtered.length} {selectedCategory.name} products
-            available in the database.
+            There are {allProducts.length}{" "}
+            {selectedCategory.name === "All Categories"
+              ? ""
+              : selectedCategory.name}{" "}
+            products available in the database.
           </h1>
           <div className="row">
-            {filtered.map(p => (
-              <div className="col-lg-4 col-md-12>">
+            {products.map(p => (
+              <div key={p._id} className="col-lg-4 col-md-12>">
                 <div className="card mb-4">
                   <img className=" card-img-top" src={p.image} alt="Product" />
                   <div className="card-body">
@@ -77,8 +97,13 @@ export default class Products extends React.Component {
                 </div>
               </div>
             ))}
-            <Pagination />
           </div>
+          <Pagination
+            itemsCount={allProducts.length}
+            onPageChange={this.handlePageChanges}
+            pageSize={pageSize}
+            currentPage={currentPage}
+          />
         </div>
       </div>
     )
