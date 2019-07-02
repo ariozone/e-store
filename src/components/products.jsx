@@ -12,7 +12,8 @@ export default class Products extends React.Component {
     categories: [],
     selectedCategory: "All Categories",
     pageSize: 6,
-    currentPage: 1
+    currentPage: 1,
+    searchQuery: ""
   }
 
   componentDidMount() {
