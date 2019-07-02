@@ -3,6 +3,7 @@ import { getProducts } from "../services/fakeProductService"
 import ListGroup from "./common/listGroup"
 import { getCategories } from "../services/fakeCategoryService"
 import Pagination from "./common/pagination"
+import SearchProducts from './searchProducts'
 import { paginate } from "../utils/paginate"
 
 export default class Products extends React.Component {
@@ -11,7 +12,8 @@ export default class Products extends React.Component {
     categories: [],
     selectedCategory: "All Categories",
     pageSize: 3,
-    currentPage: 1
+    currentPage: 1,
+    searchQuery: ""
   }
 
   componentDidMount() {
@@ -32,11 +34,21 @@ export default class Products extends React.Component {
   }
 
   handleSelectCat = category => {
-    this.setState({ selectedCategory: category, currentPage: 1 })
+    this.setState({ selectedCategory: category, currentPage: 1, searchQuery: "" })
   }
 
   handlePageChanges = page => {
     this.setState({ currentPage: page })
+  }
+
+  handleSearch = query => {
+    // console.log(this.state.searchQuery)
+
+    this.setState({
+      searchQuery: query,
+      currentPage: 1,
+      selectedCategory: "All Categories"
+    })
   }
 
   render() {
@@ -45,13 +57,13 @@ export default class Products extends React.Component {
       categories,
       selectedCategory,
       pageSize,
+      searchQuery,
       currentPage
     } = this.state
 
-    const filtered =
-      selectedCategory && selectedCategory._id
-        ? allProducts.filter(p => p.category._id === selectedCategory._id)
-        : allProducts
+    const filtered = selectedCategory && selectedCategory._id && searchQuery === ''
+      ? allProducts.filter(p => p.category._id === selectedCategory._id)
+      : searchQuery !== '' ? allProducts.filter(p => p.name.toLowerCase().startsWith(searchQuery)) : allProducts
 
     const products = paginate(filtered, currentPage, pageSize)
 
@@ -74,6 +86,7 @@ export default class Products extends React.Component {
               : selectedCategory.name}{" "}
             products available in the database.
           </h1>
+          < SearchProducts onChange={this.handleSearch} value={searchQuery} />
           <div className="row">
             {products.map(p => (
               <div key={p._id} className="col-lg-4 col-md-12>">
