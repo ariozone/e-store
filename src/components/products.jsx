@@ -59,7 +59,6 @@ export default class Products extends React.Component {
       categories,
       selectedCategory,
       pageSize,
-
       currentPage,
       searchQuery
     } = this.state
