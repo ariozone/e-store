@@ -6,20 +6,24 @@ import Customers from "./components/customers"
 import ProductForm from "./components/productForm"
 import Sales from "./components/sales"
 import NotFound from "./components/notFound"
+import NavBar from "./components/navBar"
 
 function App() {
   return (
-    <div className="container">
-      <Switch>
-        <Route path={"/products"} component={Products} />
-        <Route path={"/customers"} component={Customers} />
-        <Route path={"/productForm"} component={ProductForm} />
-        <Route path={"/sales"} component={Sales} />
-        <Route path={"/notFound"} component={NotFound} />
-        <Redirect from={"/"} exact to={"/products"} />
-        <Redirect to={"/notFound"} />
-      </Switch>
-    </div>
+    <React.Fragment>
+      <NavBar />
+      <div className="container">
+        <Switch>
+          <Route path={"/products"} component={Products} />
+          <Route path={"/customers"} component={Customers} />
+          <Route path={"/productForm"} component={ProductForm} />
+          <Route path={"/sales"} component={Sales} />
+          <Route path={"/notFound"} component={NotFound} />
+          <Redirect from={"/"} exact to={"/products"} />
+          <Redirect to={"/notFound"} />
+        </Switch>
+      </div>
+    </React.Fragment>
   )
 }
 
