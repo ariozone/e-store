@@ -19,6 +19,10 @@ function App() {
           <Route path={"/productForm"} component={ProductForm} />
           <Route path={"/sales"} component={Sales} />
           <Route path={"/notFound"} component={NotFound} />
+          <Route
+            path={"/productForm/:id"}
+            render={props => <ProductForm {...props} />}
+          />
           <Redirect from={"/"} exact to={"/products"} />
           <Redirect to={"/notFound"} />
         </Switch>
