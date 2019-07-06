@@ -96,6 +96,7 @@ export default class Products extends React.Component {
           </h1>
 
           <Search onChange={this.handleSearch} value={searchQuery} />
+
           <div className="row">
             {products.map(p => (
               <div key={p._id} className="col-lg-4 col-md-12>">
