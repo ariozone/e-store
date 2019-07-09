@@ -114,7 +114,10 @@ export default class Products extends React.Component {
                       className="btn btn-sm btn-danger float-right"
                       onClick={() => this.handleDelete(p)}
                     >
-                      delete
+                      Delete
+                    </button>
+                    <button className="btn btn-sm mx-2 btn-secondary float-right">
+                      Edit
                     </button>
                   </div>
                 </div>
