@@ -5,6 +5,7 @@ import { getCategories } from "../services/fakeCategoryService"
 import Pagination from "./common/pagination"
 import { paginate } from "../utils/paginate"
 import Search from "./common/search"
+import { Link } from "react-router-dom"
 
 export default class Products extends React.Component {
   state = {
@@ -116,9 +117,12 @@ export default class Products extends React.Component {
                     >
                       Delete
                     </button>
-                    <button className="btn btn-sm mx-2 btn-secondary float-right">
+                    <Link
+                      to={`/productForm/${p._id}`}
+                      className="btn btn-sm mx-2 btn-secondary float-right"
+                    >
                       Edit
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

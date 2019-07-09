@@ -1,30 +1,36 @@
 import React, { Component } from "react"
+import { getCategories } from "../services/fakeCategoryService"
 
 export default class ProductForm extends Component {
   state = {
-    categories: this.props.categories
+    categories: []
+  }
+  componentDidMount() {
+    const categories = getCategories()
+    this.setState({ categories })
   }
   render() {
     return (
       <form>
-        <div class="form-group">
+        <div className="form-group">
           <label htmlFor="name">Product Name</label>
-          <input type="text" class="form-control" id="name" />
+          <input type="text" className="form-control" id="name" />
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <label htmlFor="category">Select Category</label>
-          <select class="form-control" id="category">
-            this.props.categories.map(c =>
-            <option>c.name</option>)
+          <select className="form-control" id="category">
+            {this.state.categories.map(c => (
+              <option key={c._id}>{c.name}</option>
+            ))}
           </select>
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <label htmlFor="price">Price</label>
-          <input type="text" class="form-control" id="price" />
+          <input type="text" className="form-control" id="price" />
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <label htmlFor="numberInStock">Number in Stock</label>
-          <input type="text" class="form-control" id="numberInStock" />
+          <input type="text" className="form-control" id="numberInStock" />
         </div>
       </form>
     )

@@ -16,7 +16,7 @@ function App() {
         <Switch>
           <Route path={"/products"} component={Products} />
           <Route path={"/customers"} component={Customers} />
-          <Route path={"/productForm"} component={ProductForm} />
+          <Route path={"/products/:id"} component={ProductForm} />
           <Route path={"/sales"} component={Sales} />
           <Route path={"/notFound"} component={NotFound} />
           <Route
