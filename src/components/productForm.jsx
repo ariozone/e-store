@@ -33,6 +33,9 @@ export default class ProductForm extends Component {
           <label htmlFor="numberInStock">Number in Stock</label>
           <input type="text" className="form-control" id="numberInStock" />
         </div>
+        <button type="submit" className="btn btn-secondary btn-block my-5">
+          Save
+        </button>
       </form>
     )
   }
