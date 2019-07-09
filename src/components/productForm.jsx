@@ -12,6 +12,7 @@ export default class ProductForm extends Component {
   render() {
     return (
       <form>
+        <h3 className="my-5">Product ID: {this.props.match.params.id}</h3>
         <div className="form-group">
           <label htmlFor="name">Product Name</label>
           <input type="text" className="form-control" id="name" />
