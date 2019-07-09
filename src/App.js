@@ -7,6 +7,7 @@ import ProductForm from "./components/productForm"
 import Sales from "./components/sales"
 import NotFound from "./components/notFound"
 import NavBar from "./components/navBar"
+import LoginForm from "./components/loginForm"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path={"/customers"} component={Customers} />
           <Route path={"/products/:id"} component={ProductForm} />
           <Route path={"/sales"} component={Sales} />
+          <Route path={"/login"} component={LoginForm} />
           <Route path={"/notFound"} component={NotFound} />
           <Route
             path={"/productForm/:id"}
