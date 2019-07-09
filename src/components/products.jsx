@@ -78,7 +78,7 @@ export default class Products extends React.Component {
 
     return (
       <div className="row my-5">
-        <div className="col-3">
+        <div className="col-3 mx-5">
           {
             <ListGroup
               categories={categories}

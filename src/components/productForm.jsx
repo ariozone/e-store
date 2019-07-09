@@ -9,9 +9,13 @@ export default class ProductForm extends Component {
     const categories = getCategories()
     this.setState({ categories })
   }
+  handleSubmit = e => {
+    e.preventDefault()
+    this.props.history.push("/")
+  }
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <h3 className="my-5">Product ID: {this.props.match.params.id}</h3>
         <div className="form-group">
           <label htmlFor="name">Product Name</label>
@@ -33,6 +37,11 @@ export default class ProductForm extends Component {
           <label htmlFor="numberInStock">Number in Stock</label>
           <input type="text" className="form-control" id="numberInStock" />
         </div>
+        <div className="form-group">
+          <label htmlFor="imageUrl">Image URL</label>
+          <input type="text" className="form-control" id="imageUrl" />
+        </div>
+
         <button type="submit" className="btn btn-secondary btn-block my-5">
           Save
         </button>
