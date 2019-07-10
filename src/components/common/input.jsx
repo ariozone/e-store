@@ -9,7 +9,7 @@ const Input = props => {
         className="form-control"
         id={props.name}
         value={props.value}
-        onChange={this.handleChange}
+        onChange={props.handleChange}
         name={props.name}
       />
     </div>
