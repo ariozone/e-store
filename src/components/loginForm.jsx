@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Input from "../components/common/input"
 export default class LoginForm extends Component {
   state = {
     account: {
@@ -26,19 +27,7 @@ export default class LoginForm extends Component {
       <div>
         <h1>Login Form</h1>
         <form className="my-5" onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="username">Email address</label>
-            <input
-              type="email"
-              className="form-control"
-              id="username"
-              aria-describedby="emailHelp"
-              placeholder="Enter email"
-              value={account.username}
-              onChange={this.handleChange}
-              name="username"
-            />
-          </div>
+          <Input />
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <input
