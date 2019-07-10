@@ -19,7 +19,7 @@ const NavBar = props => {
         <span className="navbar-toggler-icon" />
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav">
+        <ul className="navbar-nav mr-auto">
           <li className="nav-item">
             <NavLink className="nav-link" to="/products">
               Products
@@ -33,6 +33,13 @@ const NavBar = props => {
           <li className="nav-item">
             <NavLink className="nav-link" to="/sales">
               Sales
+            </NavLink>
+          </li>
+        </ul>
+        <ul className="navbar-nav float-right">
+          <li className="nav-item align-right">
+            <NavLink className="nav-link" to="/login">
+              Login
             </NavLink>
           </li>
         </ul>
