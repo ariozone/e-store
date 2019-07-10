@@ -9,7 +9,7 @@ export default class LoginForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    console.log("Submited!", e)
+    console.log("Submited!")
   }
 
   handleChange = ({ currentTarget: input }) => {
