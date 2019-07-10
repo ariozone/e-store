@@ -6,7 +6,8 @@ export default class LoginForm extends Component {
     account: {
       username: "",
       password: ""
-    }
+    },
+    error: {}
   }
 
   handleSubmit = e => {
