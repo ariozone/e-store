@@ -3,16 +3,14 @@ import React from "react"
 const Input = props => {
   return (
     <div className="form-group">
-      <label htmlFor="username">Email address</label>
+      <label htmlFor={props.name}>Email address</label>
       <input
         type="email"
         className="form-control"
-        id="username"
-        aria-describedby="emailHelp"
-        placeholder="Enter email"
+        id={props.name}
         value={account.username}
         onChange={this.handleChange}
-        name="username"
+        name={props.name}
       />
     </div>
   )
