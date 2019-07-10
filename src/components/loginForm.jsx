@@ -6,10 +6,25 @@ export default class LoginForm extends Component {
       password: ""
     }
   }
+
   handleSubmit = e => {
     e.preventDefault()
-    console.log("Submited!")
+    console.log("Submited!", e)
   }
+
+  handleChange = e => {
+    const account = {
+      ...this.state.account
+    }
+    if (e.currentTarget.id === "username") {
+      account.username = e.currentTarget.value
+    }
+    if (e.currentTarget.id === "password")
+      account.password = e.currentTarget.value
+
+    this.setState({ account })
+  }
+
   render() {
     return (
       <div>
@@ -24,6 +39,7 @@ export default class LoginForm extends Component {
               aria-describedby="emailHelp"
               placeholder="Enter email"
               value={this.state.account.username}
+              onChange={this.handleChange}
             />
           </div>
           <div className="form-group">
@@ -34,6 +50,7 @@ export default class LoginForm extends Component {
               id="password"
               placeholder="Password"
               value={this.state.account.password}
+              onChange={this.handleChange}
             />
           </div>
           <button type="submit" className="btn btn-secondary btn-block my-5">
