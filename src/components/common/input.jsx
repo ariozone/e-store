@@ -5,12 +5,10 @@ const Input = props => {
     <div className="form-group">
       <label htmlFor={props.name}>{props.label}</label>
       <input
-        type="email"
         className="form-control"
         id={props.name}
-        value={props.value}
-        onChange={props.handleChange}
         name={props.name}
+        {...props.rest}
       />
     </div>
   )
