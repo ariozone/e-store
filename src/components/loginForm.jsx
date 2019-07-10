@@ -24,6 +24,9 @@ export default class LoginForm extends Component {
               placeholder="Password"
             />
           </div>
+          <button type="submit" className="btn btn-secondary btn-block my-5">
+            Login
+          </button>
         </form>
       </div>
     )
