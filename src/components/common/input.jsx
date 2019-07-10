@@ -8,7 +8,7 @@ const Input = props => {
         type="email"
         className="form-control"
         id={props.name}
-        value={account.username}
+        value={props.value}
         onChange={this.handleChange}
         name={props.name}
       />
