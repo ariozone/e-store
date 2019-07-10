@@ -23,6 +23,7 @@ export default class LoginForm extends Component {
               id="username"
               aria-describedby="emailHelp"
               placeholder="Enter email"
+              value={this.state.account.username}
             />
           </div>
           <div className="form-group">
@@ -32,6 +33,7 @@ export default class LoginForm extends Component {
               className="form-control"
               id="password"
               placeholder="Password"
+              value={this.state.account.password}
             />
           </div>
           <button type="submit" className="btn btn-secondary btn-block my-5">
