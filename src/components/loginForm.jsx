@@ -12,20 +12,16 @@ export default class LoginForm extends Component {
     console.log("Submited!", e)
   }
 
-  handleChange = e => {
+  handleChange = ({ currentTarget: input }) => {
     const account = {
       ...this.state.account
     }
-    if (e.currentTarget.id === "username") {
-      account.username = e.currentTarget.value
-    }
-    if (e.currentTarget.id === "password")
-      account.password = e.currentTarget.value
-
+    account[input.name] = input.value
     this.setState({ account })
   }
 
   render() {
+    const { account } = this.state
     return (
       <div>
         <h1>Login Form</h1>
@@ -38,8 +34,9 @@ export default class LoginForm extends Component {
               id="username"
               aria-describedby="emailHelp"
               placeholder="Enter email"
-              value={this.state.account.username}
+              value={account.username}
               onChange={this.handleChange}
+              name="username"
             />
           </div>
           <div className="form-group">
@@ -49,8 +46,9 @@ export default class LoginForm extends Component {
               className="form-control"
               id="password"
               placeholder="Password"
-              value={this.state.account.password}
+              value={account.password}
               onChange={this.handleChange}
+              name="password"
             />
           </div>
           <button type="submit" className="btn btn-secondary btn-block my-5">
