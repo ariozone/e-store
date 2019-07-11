@@ -38,7 +38,7 @@ export default class LoginForm extends Component {
   }
 
   render() {
-    const { account } = this.state
+    const { account, errors } = this.state
     return (
       <div>
         <h1>Login Form</h1>
@@ -50,6 +50,7 @@ export default class LoginForm extends Component {
             label={"Username"}
             onChange={this.handleChange}
             type={"email"}
+            error={errors.username}
           />
           <Input
             value={account.password}
@@ -58,6 +59,7 @@ export default class LoginForm extends Component {
             label={"Password"}
             onChange={this.handleChange}
             type={"password"}
+            error={errors.password}
           />
 
           <button type="submit" className="btn btn-secondary btn-block my-5">
