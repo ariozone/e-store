@@ -11,6 +11,7 @@ const Input = props => {
         onChange={props.onChange}
         type={props.type}
       />
+      {props.error && <div className="alert alert-danger">{props.error}</div>}
     </div>
   )
 }
