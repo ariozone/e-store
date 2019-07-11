@@ -12,10 +12,13 @@ export default class LoginForm extends Component {
   }
 
   schema = {
-    accout: {
-      username: Joi.string().required(),
-      password: Joi.string().required()
-    }
+    username: Joi.string()
+      .required()
+      .label("Username"),
+    password: Joi.string()
+      .required()
+      .label("Password")
+      .min(5)
   }
 
   handleSubmit = e => {
@@ -41,10 +44,17 @@ export default class LoginForm extends Component {
   }
 
   validate = () => {
-    const errors = Joi.validate(this.state.data, this.schema)
-    console.log(errors)
+    const { error } = Joi.validate(this.state.data, this.schema, {
+      abortEarly: false
+    })
+    if (!error) return null
+    console.log(error.details)
+    const errors = {}
+    for (let property of error.details) {
+      errors[property.path[0]] = property.message
+    }
 
-    // return Object.keys(errors).length === 0 ? null : errors
+    return errors
   }
 
   validateOnChange = input => {
