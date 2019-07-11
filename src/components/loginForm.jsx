@@ -34,6 +34,7 @@ export default class LoginForm extends Component {
       errors.username = "Username is required."
     if (account.password.trim() === "")
       errors.password = "Password is required."
+    return Object.keys(errors).length === 0 ? null : errors
   }
 
   render() {
