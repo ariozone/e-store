@@ -51,18 +51,15 @@ export default class LoginForm extends Component {
             onChange={this.handleChange}
             type={"email"}
           />
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder="Password"
-              value={account.password}
-              onChange={this.handleChange}
-              name="password"
-            />
-          </div>
+          <Input
+            value={account.password}
+            name={"password"}
+            id={"password"}
+            label={"Password"}
+            onChange={this.handleChange}
+            type={"password"}
+          />
+
           <button type="submit" className="btn btn-secondary btn-block my-5">
             Login
           </button>
