@@ -7,11 +7,15 @@ export default class LoginForm extends Component {
       username: "",
       password: ""
     },
-    error: {}
+    errors: {}
   }
 
   handleSubmit = e => {
     e.preventDefault()
+    const errors = this.validateInput()
+    console.log(errors)
+    this.setState({ errors })
+    if (errors) return
     console.log("Submited!")
   }
 
@@ -23,7 +27,7 @@ export default class LoginForm extends Component {
     this.setState({ account })
   }
 
-  validatInput = () => {
+  validateInput = () => {
     const { account } = this.state
     const errors = {}
     if (account.username.trim() === "")
