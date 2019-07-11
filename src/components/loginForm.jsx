@@ -13,8 +13,7 @@ export default class LoginForm extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const errors = this.validateInput()
-    console.log(errors)
-    this.setState({ errors })
+    this.setState({ errors: errors || {} })
     if (errors) return
     console.log("Submited!")
   }
