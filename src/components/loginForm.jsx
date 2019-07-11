@@ -12,7 +12,7 @@ export default class LoginForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const errors = this.validateInput()
+    const errors = this.validate()
     this.setState({ errors: errors || {} })
     if (errors) return
     console.log("Submited!")
@@ -26,7 +26,7 @@ export default class LoginForm extends Component {
     this.setState({ account })
   }
 
-  validateInput = () => {
+  validate = () => {
     const { account } = this.state
     const errors = {}
     if (account.username.trim() === "")
@@ -34,6 +34,17 @@ export default class LoginForm extends Component {
     if (account.password.trim() === "")
       errors.password = "Password is required."
     return Object.keys(errors).length === 0 ? null : errors
+  }
+
+  validateOnChange = input => {
+    if (input.name === "username") {
+      if (input.value.length < 3)
+        return "Username must be at least 3 characters long."
+    }
+    if (input.name === "password") {
+      if (input.value.length < 5)
+        return "Password must be at least 5 characters long."
+    }
   }
 
   render() {
