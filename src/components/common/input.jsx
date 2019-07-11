@@ -8,7 +8,8 @@ const Input = props => {
         className="form-control"
         id={props.name}
         name={props.name}
-        {...props.rest}
+        onChange={props.onChange}
+        type={props.type}
       />
     </div>
   )

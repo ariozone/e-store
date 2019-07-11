@@ -23,6 +23,15 @@ export default class LoginForm extends Component {
     this.setState({ account })
   }
 
+  validatInput = () => {
+    const { account } = this.state
+    const errors = {}
+    if (account.username.trim() === "")
+      errors.username = "Username is required."
+    if (account.password.trim() === "")
+      errors.password = "Password is required."
+  }
+
   render() {
     const { account } = this.state
     return (
@@ -35,6 +44,7 @@ export default class LoginForm extends Component {
             id={"username"}
             label={"Username"}
             onChange={this.handleChange}
+            type={"email"}
           />
           <div className="form-group">
             <label htmlFor="password">Password</label>
