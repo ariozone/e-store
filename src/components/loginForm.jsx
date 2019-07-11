@@ -4,7 +4,7 @@ import Joi from "joi-browser"
 
 export default class LoginForm extends Component {
   state = {
-    account: {
+    data: {
       username: "",
       password: ""
     },
@@ -12,8 +12,10 @@ export default class LoginForm extends Component {
   }
 
   schema = {
-    username: Joi.string().required(),
-    password: Joi.string().required()
+    accout: {
+      username: Joi.string().required(),
+      password: Joi.string().required()
+    }
   }
 
   handleSubmit = e => {
@@ -30,19 +32,19 @@ export default class LoginForm extends Component {
     if (errorMessage) errors[input.name] = errorMessage
     else delete errors[input.name]
 
-    const account = {
-      ...this.state.account
+    const data = {
+      ...this.state.data
     }
-    account[input.name] = input.value
+    data[input.name] = input.value
 
-    this.setState({ account, errors })
+    this.setState({ data, errors })
   }
 
   validate = () => {
-    const { account } = this.state
-    const errors = {}
+    const errors = Joi.validate(this.state.data, this.schema)
+    console.log(errors)
 
-    return Object.keys(errors).length === 0 ? null : errors
+    // return Object.keys(errors).length === 0 ? null : errors
   }
 
   validateOnChange = input => {
@@ -57,13 +59,13 @@ export default class LoginForm extends Component {
   }
 
   render() {
-    const { account, errors } = this.state
+    const { data, errors } = this.state
     return (
       <div>
         <h1>Login Form</h1>
         <form className="my-5" onSubmit={this.handleSubmit}>
           <Input
-            value={account.username}
+            value={data.username}
             name={"username"}
             id={"username"}
             label={"Username"}
@@ -72,7 +74,7 @@ export default class LoginForm extends Component {
             error={errors.username}
           />
           <Input
-            value={account.password}
+            value={data.password}
             name={"password"}
             id={"password"}
             label={"Password"}
