@@ -48,7 +48,6 @@ export default class LoginForm extends Component {
       abortEarly: false
     })
     if (!error) return null
-    console.log(error.details)
     const errors = {}
     for (let property of error.details) {
       errors[property.path[0]] = property.message
@@ -58,14 +57,7 @@ export default class LoginForm extends Component {
   }
 
   validateOnChange = input => {
-    if (input.name === "username") {
-      if (input.value.length < 3)
-        return "Username must be at least 3 characters long."
-    }
-    if (input.name === "password") {
-      if (input.value.length < 5)
-        return "Password must be at least 5 characters long."
-    }
+    const targetInput = { [input.name]: input.value } // computed properties in ES6
   }
 
   render() {
