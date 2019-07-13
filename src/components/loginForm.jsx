@@ -58,6 +58,9 @@ export default class LoginForm extends Component {
 
   validateOnChange = input => {
     const targetInput = { [input.name]: input.value } // computed properties in ES6
+    const schema = { [input.name]: this.schema[input.name] }
+    const { error } = Joi.validate(targetInput, schema)
+    if (!error) return null
   }
 
   render() {
