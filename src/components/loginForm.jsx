@@ -75,7 +75,7 @@ export default class LoginForm extends Component {
             id={"username"}
             label={"Username"}
             onChange={this.handleChange}
-            type={"email"}
+            type={"text"}
             error={errors.username}
           />
           <Input
@@ -88,7 +88,11 @@ export default class LoginForm extends Component {
             error={errors.password}
           />
 
-          <button type="submit" className="btn btn-secondary btn-block my-5">
+          <button
+            type="submit"
+            className="btn btn-secondary btn-block my-5"
+            disabled={this.validate()}
+          >
             Login
           </button>
         </form>
