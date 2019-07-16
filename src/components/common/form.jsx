@@ -65,13 +65,11 @@ export default class Form extends Component {
   renderInput = (name, label) => {
     return (
       <Input
-        value={this.data.username}
+        value={this.data[name]}
         name={name}
-        id={"username"}
         label={label}
         onChange={this.handleChange}
-        type={"text"}
-        error={this.errors.username}
+        error={this.errors[name]}
       />
     )
   }
