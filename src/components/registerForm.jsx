@@ -19,6 +19,9 @@ export default class RegisterForm extends Form {
       .min(2)
       .label("Name")
   }
+  doSubmit = () => {
+    console.log("Submitted")
+  }
   render() {
     return (
       <div>
