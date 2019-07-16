@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Joi from "joi-browser"
-import Input from "../common/input"
+import Input from "./input"
 
 export default class Form extends Component {
   state = {
@@ -17,8 +17,9 @@ export default class Form extends Component {
   }
 
   handleChange = ({ currentTarget: input }) => {
-    const errors = { ...this.state.errors }
     const errorMessage = this.validateOnChange(input)
+
+    const errors = { ...this.state.errors }
     if (errorMessage) errors[input.name] = errorMessage
     else delete errors[input.name]
 
@@ -30,7 +31,7 @@ export default class Form extends Component {
     this.setState({ data, errors })
   }
 
-  validate = () => {
+  validate() {
     const { error } = Joi.validate(this.state.data, this.schema, {
       abortEarly: false
     })
@@ -43,7 +44,7 @@ export default class Form extends Component {
     return errors
   }
 
-  validateOnChange = input => {
+  validateOnChange(input) {
     const targetInput = { [input.name]: input.value } // computed properties in ES6
     const schema = { [input.name]: this.schema[input.name] }
     const { error } = Joi.validate(targetInput, schema)
@@ -62,14 +63,17 @@ export default class Form extends Component {
     )
   }
 
-  renderInput = (name, label) => {
+  renderInput(name, label, type = "text") {
+    const { data, errors } = this.state
     return (
       <Input
-        value={this.data[name]}
+        value={data[name]}
+        id={name}
         name={name}
         label={label}
         onChange={this.handleChange}
-        error={this.errors[name]}
+        error={errors[name]}
+        type={type}
       />
     )
   }

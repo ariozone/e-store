@@ -18,7 +18,6 @@ export default class LoginForm extends Form {
     password: Joi.string()
       .required()
       .label("Password")
-      .min(5)
   }
 
   doSubmit = () => {
@@ -28,10 +27,10 @@ export default class LoginForm extends Form {
   render() {
     return (
       <div>
-        <h1>Login Form</h1>
+        <h1>Login</h1>
         <form className="my-5" onSubmit={this.handleSubmit}>
-          {this.renderInput("userName", "Username")}
-          {this.renderInput("password", "Password")}
+          {this.renderInput("username", "Username")}
+          {this.renderInput("password", "Password", "password")}
           {this.renderButton("Login")}
         </form>
       </div>
