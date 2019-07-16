@@ -50,14 +50,6 @@ export default class LoginForm extends Form {
             type={"password"}
             error={errors.password}
           />
-
-          <button
-            type="submit"
-            className="btn btn-secondary btn-block my-5"
-            disabled={this.validate()}
-          >
-            Login
-          </button>
         </form>
       </div>
     )

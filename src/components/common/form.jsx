@@ -1,4 +1,4 @@
-import { Component } from "react"
+import React, { Component } from "react"
 import Joi from "joi-browser"
 
 export default class Form extends Component {
@@ -47,5 +47,17 @@ export default class Form extends Component {
     const schema = { [input.name]: this.schema[input.name] }
     const { error } = Joi.validate(targetInput, schema)
     return error ? error.details[0].message : null
+  }
+
+  renderButton = label => {
+    return (
+      <button
+        type="submit"
+        className="btn btn-secondary btn-block my-5"
+        disabled={this.validate()}
+      >
+        {label}
+      </button>
+    )
   }
 }
