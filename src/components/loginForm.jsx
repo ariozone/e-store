@@ -50,6 +50,7 @@ export default class LoginForm extends Form {
             type={"password"}
             error={errors.password}
           />
+          {this.renderButton("Login")}
         </form>
       </div>
     )
