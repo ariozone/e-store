@@ -9,7 +9,7 @@ export default function ListGroup(props) {
           <li
             className={
               c === selectedCategory
-                ? "list-group-item active"
+                ? "list-group-item bg-secondary text-white"
                 : "list-group-item"
             }
             key={c._id}
