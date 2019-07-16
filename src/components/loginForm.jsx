@@ -1,8 +1,9 @@
-import React, { Component } from "react"
+import React from "react"
 import Input from "../components/common/input"
 import Joi from "joi-browser"
+import Form from "../components/common/form"
 
-export default class LoginForm extends Component {
+export default class LoginForm extends Form {
   state = {
     data: {
       username: "",
@@ -19,6 +20,10 @@ export default class LoginForm extends Component {
       .required()
       .label("Password")
       .min(5)
+  }
+
+  doSubmit = () => {
+    console.log("submitted.")
   }
 
   render() {
