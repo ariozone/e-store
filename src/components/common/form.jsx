@@ -68,7 +68,6 @@ export default class Form extends Component {
     return (
       <Input
         value={data[name]}
-        id={name}
         name={name}
         label={label}
         onChange={this.handleChange}
