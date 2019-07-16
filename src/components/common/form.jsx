@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import Joi from "joi-browser"
+import Input from "../common/input"
 
 export default class Form extends Component {
   state = {
@@ -58,6 +59,20 @@ export default class Form extends Component {
       >
         {label}
       </button>
+    )
+  }
+
+  renderInput = (name, label) => {
+    return (
+      <Input
+        value={this.data.username}
+        name={name}
+        id={"username"}
+        label={label}
+        onChange={this.handleChange}
+        type={"text"}
+        error={this.errors.username}
+      />
     )
   }
 }
