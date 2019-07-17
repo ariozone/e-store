@@ -18,7 +18,7 @@
 
 #### User can search for products.
 <p align="center">
-<img src="user-images.githubusercontent.com/19956694/60549791-c72e1380-9cda-11e9-836f-f8432024cd04.gif"/>
+<img src="https://user-images.githubusercontent.com/19956694/60549791-c72e1380-9cda-11e9-836f-f8432024cd04.gif"/>
 </p>
 
 #### User can navigate to different pages in the application.
