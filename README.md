@@ -1,3 +1,54 @@
+# Pig E Store
+
+ An application for business owners who sell merchandise online or it their retail stores.
+
+
+## Technologies
+- React.js
+- JavaScript
+- Bootstrap 4
+- Joi Browser
+- Lodash
+- React Router Dom
+
+#### User can filter products based on category.
+<p align="center">
+<img src="https://user-images.githubusercontent.com/19956694/60481315-b2ea0800-9c41-11e9-99c0-37554d1a0a34.gif"/>
+</p>
+
+#### User can search for products.
+<p align="center">
+<img src="user-images.githubusercontent.com/19956694/60549791-c72e1380-9cda-11e9-836f-f8432024cd04.gif"/>
+</p>
+
+#### User can navigate to different pages in the application.
+<p align="center">
+<img src="https://user-images.githubusercontent.com/19956694/60853713-2942b900-a1b2-11e9-832a-b93a86010089.gif"/>
+</p>
+
+#### User can login.
+<p align="center">
+<img src="https://user-images.githubusercontent.com/19956694/61263071-7d164a80-a73c-11e9-888a-368b935d1d59.gif"/>
+</p>
+
+#### User can Register.
+<p align="center">
+<img src="https://user-images.githubusercontent.com/19956694/61265787-c370a700-a746-11e9-87b0-0528990ce1d7.gif"/>
+</p>
+
+
+## Usage
+Clone and install dependencies.
+```
+git clone https://github.com/ariozone/pig-e-store.git
+cd pig-e-store/
+npm install
+```
+Run the app
+```
+npm start
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
