@@ -11,7 +11,11 @@ export default class ProductForm extends Form {
   schema = {
     _id: Joi.string(),
     name: Joi.string().required(),
-    categoryId: Joi.string().required()
+    categoryId: Joi.string().required(),
+    numberInStoch: Joi.number()
+      .required()
+      .min(0)
+      .max(100)
   }
   componentDidMount() {
     const categories = getCategories()
