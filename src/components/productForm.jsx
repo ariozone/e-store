@@ -15,7 +15,11 @@ export default class ProductForm extends Form {
     numberInStoch: Joi.number()
       .required()
       .min(0)
-      .max(100)
+      .max(100),
+    price: Joi.number()
+      .required()
+      .min(0)
+      .max(1000)
   }
   componentDidMount() {
     const categories = getCategories()
