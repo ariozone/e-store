@@ -1,11 +1,17 @@
 import React from "react"
 import Form from "./common/form"
 import { getCategories } from "../services/fakeCategoryService"
+import Joi from "joi-browser"
 
 export default class ProductForm extends Form {
   state = {
     data: { name: "", catergoryId: "", numberInStock: "", price: "" },
     error: {}
+  }
+  schema = {
+    _id: Joi.string(),
+    name: Joi.string().required(),
+    categoryId: Joi.string().required()
   }
   componentDidMount() {
     const categories = getCategories()
