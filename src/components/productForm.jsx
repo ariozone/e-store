@@ -4,7 +4,8 @@ import { getCategories } from "../services/fakeCategoryService"
 
 export default class ProductForm extends Form {
   state = {
-    categories: []
+    data: { name: "", catergoryId: "", numberInStock: "", price: "" },
+    error: {}
   }
   componentDidMount() {
     const categories = getCategories()
