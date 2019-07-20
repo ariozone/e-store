@@ -1,7 +1,8 @@
-import React, { Component } from "react"
+import React from "react"
+import Form from "./common/form"
 import { getCategories } from "../services/fakeCategoryService"
 
-export default class ProductForm extends Component {
+export default class ProductForm extends Form {
   state = {
     categories: []
   }
