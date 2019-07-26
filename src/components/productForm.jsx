@@ -51,7 +51,14 @@ export default class ProductForm extends Form {
     return (
       <form onSubmit={this.handleSubmit}>
         {this.renderInput("name", "Name", "text")}
-        {this.renderInput("category", "Category", "text")}
+        <div className="form-group">
+          <label htmlFor="category">Select Category</label>
+          <select className="form-control" id="category">
+            {this.state.categories.map(c => (
+              <option key={c._id}>{c.name}</option>
+            ))}
+          </select>
+        </div>
         {this.renderInput("numberInStoch", "In Stock", "number")}
         {this.renderInput("price", "Price", "number")}
         {this.renderButton("Save")}
