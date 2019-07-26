@@ -134,7 +134,7 @@ export default class Products extends React.Component {
             pageSize={pageSize}
             currentPage={currentPage}
           />
-          <Link to="/productForm" className="btn btn-secondary btn-block">
+          <Link to="/products/new" className="btn btn-secondary btn-block">
             Add New
           </Link>
         </div>

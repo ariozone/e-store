@@ -5,25 +5,43 @@ import Joi from "joi-browser"
 
 export default class ProductForm extends Form {
   state = {
-    data: { name: "", catergoryId: "", numberInStock: "", price: "" },
+    data: {
+      name: "",
+      catergoryId: "",
+      numberInStock: "",
+      price: "",
+      imageUrl: ""
+    },
+    categories: [],
     error: {}
   }
+
   schema = {
     _id: Joi.string(),
-    name: Joi.string().required(),
-    categoryId: Joi.string().required(),
+    name: Joi.string()
+      .required()
+      .label("Name"),
+    categoryId: Joi.string()
+      .required()
+      .label("Category"),
     numberInStoch: Joi.number()
       .required()
       .min(0)
-      .max(100),
+      .max(100)
+      .label("In Stock"),
     price: Joi.number()
       .required()
       .min(0)
       .max(1000)
+      .label("Price"),
+    imageUrl: Joi.string()
   }
+
   componentDidMount() {
     const categories = getCategories()
     this.setState({ categories })
+    const productId = this.props.match.params.id
+    if (productId === "new") return
   }
   handleSubmit = e => {
     e.preventDefault()
