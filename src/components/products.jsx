@@ -118,7 +118,7 @@ export default class Products extends React.Component {
                       Delete
                     </button>
                     <Link
-                      to={`/productForm/${p._id}`}
+                      to={`/products/${p._id}`}
                       className="btn btn-sm mx-2 btn-secondary float-right"
                     >
                       Edit

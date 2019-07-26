@@ -35,6 +35,11 @@ const NavBar = props => {
               Sales
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/productForm">
+              Product Form
+            </NavLink>
+          </li>
         </ul>
         <ul className="navbar-nav float-right">
           <li className="nav-item align-right">

@@ -14,7 +14,7 @@ export default class ProductForm extends Form {
       imageUrl: ""
     },
     categories: [],
-    error: {}
+    errors: {}
   }
 
   schema = {
@@ -46,7 +46,11 @@ export default class ProductForm extends Form {
 
     const product = getProduct(productId)
     if (!product) return this.props.history.replace("/notFound")
+
+    this.setState({ data: this.mapToViewModel(product) })
   }
+
+  // The RESTful APIs we have on the server are general purpose. This data will use in several pages. Each page needs a piece of that data. The data might be different from what we want to display on our page. Thats why we create a view model.
 
   mapToViewModel(product) {
     return {
@@ -66,44 +70,16 @@ export default class ProductForm extends Form {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        {this.renderInput("name", "Name", "text")}
-        {this.renderSelect("categorId", "Category", this.state.categories)}
-        {this.renderInput("numberInStoch", "In Stock", "number")}
-        {this.renderInput("price", "Price", "number")}
-        {this.renderButton("Save")}
-      </form>
-      //   {/* <div>
-      //   <h3 className="my-5">Product ID: {this.props.match.params.id}</h3>
-      //   <div className="form-group">
-      //     <label htmlFor="name">Product Name</label>
-      //     <input type="text" className="form-control" id="name" />
-      //   </div>
-      //   <div className="form-group">
-      //     <label htmlFor="category">Select Category</label>
-      //     <select className="form-control" id="category">
-      //       {this.state.categories.map(c => (
-      //         <option key={c._id}>{c.name}</option>
-      //       ))}
-      //     </select>
-      //   </div>
-      //   <div className="form-group">
-      //     <label htmlFor="price">Price</label>
-      //     <input type="text" className="form-control" id="price" />
-      //   </div>
-      //   <div className="form-group">
-      //     <label htmlFor="numberInStock">Number in Stock</label>
-      //     <input type="text" className="form-control" id="numberInStock" />
-      //   </div>
-      //   <div className="form-group">
-      //     <label htmlFor="imageUrl">Image URL</label>
-      //     <input type="text" className="form-control" id="imageUrl" />
-      //   </div>
-
-      //   <button type="submit" className="btn btn-secondary btn-block my-5">
-      //     Save
-      //   </button>
-      // </div> */}
+      <div>
+        <h1 className="my-5">Product ID: {this.props.match.params.id}</h1>
+        <form onSubmit={this.handleSubmit}>
+          {this.renderInput("name", "Name", "text")}
+          {this.renderSelect("categorId", "Category", this.state.categories)}
+          {this.renderInput("numberInStoch", "In Stock", "number")}
+          {this.renderInput("price", "Price", "number")}
+          {this.renderButton("Save")}
+        </form>
+      </div>
     )
   }
 }
