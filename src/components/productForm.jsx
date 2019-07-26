@@ -8,7 +8,7 @@ export default class ProductForm extends Form {
   state = {
     data: {
       name: "",
-      catergoryId: "",
+      categoryId: "",
       numberInStock: "",
       price: "",
       imageUrl: ""
@@ -72,12 +72,13 @@ export default class ProductForm extends Form {
   render() {
     return (
       <div>
-        <h1 className="my-5">Product Form {this.props.match.params.id}</h1>
+        <h1 className="my-5">Product Form</h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("name", "Name", "text")}
           {this.renderSelect("categoryId", "Category", this.state.categories)}
           {this.renderInput("numberInStock", "In Stock", "number")}
           {this.renderInput("price", "Price", "number")}
+          {this.renderInput("imageUrl", "Image URL", "text")}
           {this.renderButton("Save")}
         </form>
       </div>

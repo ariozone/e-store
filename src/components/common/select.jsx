@@ -1,17 +1,19 @@
 import React from "react"
 
-const Select = ({ name, label, options, error, ...rest }) => {
+export default function Select(props) {
+  const { name, label, options, error, ...rest } = props
   return (
     <div className="form-group">
       <label htmlFor={name}>{label}</label>
-      <select className="form-control" id={name} name={name} {...rest}>
-        {options.map(o => (
-          <option key={o._id}>{o.name}</option>
+      <select name={name} id={name} {...rest} className="form-control">
+        <option className="bg-light" value="" />
+        {options.map(option => (
+          <option key={option._id} value={option._id}>
+            {option.name}
+          </option>
         ))}
       </select>
       {error && <div className="alert alert-danger">{error}</div>}
     </div>
   )
 }
-
-export default Select
