@@ -16,6 +16,7 @@ function App() {
       <NavBar />
       <div className="container">
         <Switch>
+          <Route path={"/products/:id"} component={ProductForm} />
           <Route path={"/products"} component={Products} />
           <Route path={"/customers"} component={Customers} />
           <Route path={"/productForm"} component={ProductForm} />
@@ -24,7 +25,7 @@ function App() {
           <Route path={"/register"} component={RegisterForm} />
           <Route path={"/notFound"} component={NotFound} />
           <Route
-            path={"/product/:id"}
+            path={"/products/:id"}
             render={props => <ProductForm {...props} />}
           />
           <Redirect from={"/"} exact to={"/products"} />

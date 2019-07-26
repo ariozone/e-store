@@ -128,9 +128,10 @@ export function saveProduct(product) {
   )
   productInDb.numberInStock = product.numberInStock
   productInDb.price = product.price
+  productInDb.image = product.image
 
   if (!productInDb._id) {
-    productInDb._id = Date.now()
+    productInDb._id = Date.now().toString()
     products.push(productInDb)
   }
 

@@ -2,7 +2,7 @@ import React from "react"
 import Form from "./common/form"
 import { getCategories } from "../services/fakeCategoryService"
 import Joi from "joi-browser"
-import { getProduct } from "../services/fakeProductService"
+import { getProduct, saveProduct } from "../services/fakeProductService"
 
 export default class ProductForm extends Form {
   state = {
@@ -25,7 +25,7 @@ export default class ProductForm extends Form {
     categoryId: Joi.string()
       .required()
       .label("Category"),
-    numberInStoch: Joi.number()
+    numberInStock: Joi.number()
       .required()
       .min(0)
       .max(100)
@@ -41,6 +41,7 @@ export default class ProductForm extends Form {
   componentDidMount() {
     const categories = getCategories()
     this.setState({ categories })
+
     const productId = this.props.match.params.id
     if (productId === "new") return
 
@@ -57,25 +58,25 @@ export default class ProductForm extends Form {
       _id: product._id,
       name: product.name,
       categoryId: product.category._id,
-      numberInStoch: product.numberInStoch,
+      numberInStock: product.numberInStock,
       price: product.price,
       imageUrl: product.imageUrl
     }
   }
 
-  handleSubmit = e => {
-    e.preventDefault()
-    this.props.history.push("/")
+  doSubmit() {
+    saveProduct(this.state.data)
+    this.props.history.push("/products")
   }
 
   render() {
     return (
       <div>
-        <h1 className="my-5">Product ID: {this.props.match.params.id}</h1>
+        <h1 className="my-5">Product Form {this.props.match.params.id}</h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("name", "Name", "text")}
-          {this.renderSelect("categorId", "Category", this.state.categories)}
-          {this.renderInput("numberInStoch", "In Stock", "number")}
+          {this.renderSelect("categoryId", "Category", this.state.categories)}
+          {this.renderInput("numberInStock", "In Stock", "number")}
           {this.renderInput("price", "Price", "number")}
           {this.renderButton("Save")}
         </form>
