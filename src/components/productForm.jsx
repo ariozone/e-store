@@ -2,6 +2,7 @@ import React from "react"
 import Form from "./common/form"
 import { getCategories } from "../services/fakeCategoryService"
 import Joi from "joi-browser"
+import { getProduct } from "../services/fakeProductService"
 
 export default class ProductForm extends Form {
   state = {
@@ -42,6 +43,9 @@ export default class ProductForm extends Form {
     this.setState({ categories })
     const productId = this.props.match.params.id
     if (productId === "new") return
+
+    const product = getProduct(productId)
+    if (!product) return this.props.history.replace("/notFound")
   }
   handleSubmit = e => {
     e.preventDefault()
