@@ -102,7 +102,11 @@ export default class Products extends React.Component {
             {products.map(p => (
               <div key={p._id} className="col-lg-4 col-md-12>">
                 <div className="card mb-4">
-                  <img className=" card-img-top" src={p.image} alt="Product" />
+                  <img
+                    className=" card-img-top"
+                    src={p.imageUrl}
+                    alt="Product"
+                  />
                   <div className="card-body">
                     <h5 className="card-title">{p.name}</h5>
                     <p className="card-text">${p.price}</p>
@@ -118,8 +122,8 @@ export default class Products extends React.Component {
                       Delete
                     </button>
                     <Link
-                      to={`/productForm/${p._id}`}
                       className="btn btn-sm mx-2 btn-secondary float-right"
+                      to={`/products/${p._id}`}
                     >
                       Edit
                     </Link>
@@ -134,6 +138,9 @@ export default class Products extends React.Component {
             pageSize={pageSize}
             currentPage={currentPage}
           />
+          <Link to="/products/new" className="btn btn-secondary btn-block">
+            Add New
+          </Link>
         </div>
       </div>
     )

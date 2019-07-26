@@ -16,15 +16,16 @@ function App() {
       <NavBar />
       <div className="container">
         <Switch>
+          <Route path={"/products/:id"} component={ProductForm} />
           <Route path={"/products"} component={Products} />
           <Route path={"/customers"} component={Customers} />
-          <Route path={"/products/:id"} component={ProductForm} />
+          <Route path={"/productForm"} component={ProductForm} />
           <Route path={"/sales"} component={Sales} />
           <Route path={"/login"} component={LoginForm} />
           <Route path={"/register"} component={RegisterForm} />
           <Route path={"/notFound"} component={NotFound} />
           <Route
-            path={"/productForm/:id"}
+            path={"/products/:id"}
             render={props => <ProductForm {...props} />}
           />
           <Redirect from={"/"} exact to={"/products"} />
