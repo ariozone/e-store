@@ -1,10 +1,11 @@
 {
-  "name": "pig-e-store",
+  "name": "e-store",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.4",
     "bootstrap": "^4.3.1",
+    "fontawesome": "^5.6.3",
     "joi-browser": "^13.4.0",
     "lodash": "^4.17.14",
     "react": "^16.8.6",
