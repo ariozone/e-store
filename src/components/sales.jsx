@@ -1,7 +1,6 @@
-import React, { Component } from "react"
+import React from "react"
 
-export default class Sales extends Component {
-  render() {
-    return <h1>Sales</h1>
-  }
+const Sales = () => {
+  return <h1>Sales</h1>
 }
+export default Sales
