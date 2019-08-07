@@ -1,4 +1,4 @@
-# Pig E Store
+# E Store
 
  An application for business owners who sell merchandise online or it their retail stores.
 
@@ -10,6 +10,7 @@
 - Joi Browser
 - Lodash
 - React Router Dom
+- React Hooks
 
 #### User can filter products based on category.
 <p align="center">
